@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfólio de Pablo Pellozzo - Automação Industrial & Desenvolvimento de Software" />
+  <title>Pablo Pellozzo | Portfólio</title>
+
+  <style>
+    :root{
+      --bg: #0b0f17;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --border: rgba(255,255,255,.14);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --accent: #7c5cff;
+      --accent2:#20e3b2;
+      --warn:#ffb86b;
+      --radius: 18px;
+      --max: 1080px;
+    }
+    [data-theme="light"]{
+      --bg: #f7f8fb;
+      --panel: rgba(0,0,0,.05);
+      --panel2: rgba(0,0,0,.08);
+      --text: rgba(0,0,0,.88);
+      --muted: rgba(0,0,0,.60);
+      --border: rgba(0,0,0,.12);
+      --shadow: 0 12px 26px rgba(0,0,0,.14);
+      --accent: #5b5cff;
+      --accent2:#00b894;
+      --warn:#ff8c42;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(124,92,255,.35), transparent 60%),
+        radial-gradient(900px 500px at 95% 10%, rgba(32,227,178,.22), transparent 50%),
+        radial-gradient(900px 500px at 40% 110%, rgba(255,184,107,.18), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 60px;}
+    .topbar{
+      position:sticky; top:0;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg) 75%, transparent);
+      border-bottom: 1px solid var(--border);
+      z-index:20;
+    }
+    .topbar-inner{
+      max-width:var(--max); margin:0 auto; padding:12px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{display:flex; gap:10px; align-items:center; text-decoration:none}
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:
+        linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: var(--shadow);
+      display:grid; place-items:center;
+      font-weight:800; letter-spacing:.5px;
+      color:white;
+    }
+    .brand strong{font-size:14px; line-height:1.1}
+    .brand span{display:block; font-size:12px; color:var(--muted)}
+    .nav{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      font-size:13px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .nav a:hover{border-color:var(--border); color:var(--text); background:var(--panel)}
+    .btn{
+      border:1px solid var(--border);
+      background:var(--panel);
+      color:var(--text);
+      padding:9px 12px;
+      border-radius:12px;
+      font-size:13px;
+      cursor:pointer;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      text-decoration:none;
+    }
+    .btn:hover{background:var(--panel2)}
+    .btn.primary{
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 65%, transparent), color-mix(in srgb, var(--accent2) 40%, transparent));
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:var(--panel);
+      font-size:12px;
+      color:var(--muted);
+      margin-right:8px;
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 860px){
+      .hero{grid-template-columns: 1fr}
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .hero-main{padding:22px}
+    .kicker{
+      display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(26px, 3.5vw, 42px);
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+    .lead{margin:0 0 16px; color:var(--muted); font-size:15px}
+    .hero-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    .hero-side{padding:18px; display:flex; flex-direction:column; gap:12px}
+    .mini{
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 80%, transparent);
+    }
+    .mini h3{margin:0 0 8px; font-size:14px}
+    .mini p{margin:0; color:var(--muted); font-size:13px}
+    .mini .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--muted);
+      background: var(--panel);
+    }
+
+    /* Sections */
+    section{margin-top:22px}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+      margin: 6px 2px 12px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-.01em;
+    }
+    .section-head p{margin:0; color:var(--muted); font-size:13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+    }
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: span 12}
+    @media (max-width: 860px){
+      .col-6,.col-4,.col-8{grid-column: span 12}
+    }
+
+    .item{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .item::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(500px 200px at 10% 0%, rgba(124,92,255,.20), transparent 60%),
+                  radial-gradient(500px 200px at 90% 10%, rgba(32,227,178,.14), transparent 55%);
+      pointer-events:none;
+      opacity:.85;
+    }
+    .item > *{position:relative}
+    .item h3{margin:0 0 8px; font-size:15px}
+    .item p{margin:0 0 12px; color:var(--muted); font-size:13px}
+    .item .meta{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px}
+    .badge{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 85%, transparent);
+      color:var(--muted);
+    }
+    .item .links{display:flex; gap:10px; flex-wrap:wrap}
+    .item .links a{font-size:13px}
+
+    .timeline{display:grid; gap:12px}
+    .line{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:14px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .dot{
+      width:12px; height:12px; border-radius:999px;
+      margin-top:4px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      flex:0 0 auto;
+    }
+    .dot.experiencia{
+  background: linear-gradient(135deg, #00c853, #64dd17);
+    }
+
+    .line h3{margin:0; font-size:14px}
+    .line p{margin:6px 0 0; color:var(--muted); font-size:13px}
+    footer{
+      margin-top:28px;
+      padding-top:18px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      padding:2px 8px;
+      border:1px solid var(--border);
+      border-radius:8px;
+      background: var(--panel);
+      color:var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true">PL</div>
+        <div>
+          <strong id="nameTop">Pablo Pellozzo</strong>
+          <span id="roleTop">Automação Industrial • Dev</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#sobre">Sobre</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#contato">Contato</a>
+        <button class="btn" id="themeBtn" type="button" aria-label="Alternar tema">🌓 Tema</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="top">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card hero-main">
+        <div class="kicker">
+          <span class="pill">🤖 Automação</span>
+          <span class="pill">💻 Ciência da Computação</span>
+          <span class="pill">🌐 Redes / TCP-IP</span>
+        </div>
+
+        <h1>
+          Eu conecto <span style="color:var(--accent2)">chão de fábrica</span> com
+          <span style="color:var(--accent)">software</span>.
+        </h1>
+
+        <p class="lead" id="heroLead">
+          Técnico em Mecatrônica atuando com CLPs e robôs industriais na Foxconn.
+          Estudante de Ciência da Computação, construindo sistemas cliente-servidor, interfaces e automações.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#projetos">🚀 Ver projetos</a>
+          <a class="btn" id="btnGithub" href="https://github.com/Pellzz" target="_blank" rel="noreferrer">🐙 GitHub</a>
+          <a class="btn" id="btnLinkedIn" href="https://www.linkedin.com/in/pablo-pellozzo-b49b3926a/" target="_blank" rel="noreferrer">💼 LinkedIn</a>
+          <a class="btn" href="#contato">✉️ Contato</a>
+        </div>
+      </div>
+
+      <aside class="card hero-side">
+        <div class="mini">
+          <h3>O que eu faço</h3>
+          <p>Automação industrial, manutenção preventiva, integração de dados e desenvolvimento de sistemas (Java/C/C#/Python).</p>
+          <div class="tags">
+            <span class="tag">CLP</span>
+            <span class="tag">Robôs</span>
+            <span class="tag">Java</span>
+            <span class="tag">Sockets</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="mini">
+          <h3>O que eu busco</h3>
+          <p>Estágio / oportunidade em TI ou desenvolvimento, com foco em soluções que reduzam retrabalho e erros na operação.</p>
+          <div class="tags">
+            <span class="tag">Indústria 4.0</span>
+            <span class="tag">Automação + TI</span>
+            <span class="tag">Interfaces</span>
+          </div>
+        </div>
+
+        <div class="mini">
+          <h3>Atalhos</h3>
+          <p><span class="kbd">T</span> alterna tema • <span class="kbd">G</span> abre GitHub • <span class="kbd">L</span> abre LinkedIn</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="section-head">
+        <h2>Sobre</h2>
+        <p>Uma visão rápida, sem enrolação.</p>
+      </div>
+
+      <div class="grid">
+        <div class="item col-8">
+          <h3>Resumo</h3>
+          <p>
+            Sou técnico em mecatrônica com atuação em automação industrial, trabalhando com CLPs, robôs e manutenção preventiva.
+            Paralelamente, curso Ciência da Computação e desenvolvo projetos focados em redes, sistemas cliente-servidor e interfaces.
+          </p>
+          <p>
+            Meu objetivo é construir soluções que unam confiabilidade industrial com a agilidade do software, transformando planilhas,
+            processos manuais e gargalos em sistemas simples, rastreáveis e rápidos.
+          </p>
+        </div>
+
+        <div class="item col-4">
+          <h3>Destaques</h3>
+          <div class="meta">
+            <span class="badge">✅ Automação (Foxconn)</span>
+            <span class="badge">✅ CLPs e robôs</span>
+            <span class="badge">✅ Java / C / C# / Python</span>
+            <span class="badge">✅ TCP/IP</span>
+          </div>
+          <p>Gosto de projetos com impacto real: menos erro, menos retrabalho, mais rastreabilidade.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section id="habilidades">
+      <div class="section-head">
+        <h2>Habilidades</h2>
+        <p>Ferramentas que eu realmente uso.</p>
+      </div>
+
+      <div class="grid">
+        <div class="item col-6">
+          <h3>Desenvolvimento</h3>
+          <div class="meta">
+            <span class="badge">Java (Swing, Sockets)</span>
+            <span class="badge">C (algoritmos)</span>
+            <span class="badge">C#</span>
+            <span class="badge">Python</span>
+            <span class="badge">SQLite / MySQL</span>
+          </div>
+          <p>Foco em aplicações práticas: interfaces, comunicação em rede, persistência e integração.</p>
+        </div>
+
+        <div class="item col-6">
+          <h3>Automação Industrial</h3>
+          <div class="meta">
+            <span class="badge">CLP</span>
+            <span class="badge">Robôs industriais</span>
+            <span class="badge">Preventivas</span>
+            <span class="badge">Diagnóstico</span>
+            <span class="badge">Melhoria de processos</span>
+          </div>
+          <p>Experiência em ambiente de produção, onde o “funciona” precisa ser “funciona sempre”.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+<section id="projetos">
+  <div class="section-head">
+    <h2>Projetos</h2>
+    <p>Soluções aplicadas com foco em indústria, rede e organização de processos.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- Projeto 1 -->
+    <article class="item col-6">
+      <h3>Sistema de Controle e Automação</h3>
+      <div class="meta">
+        <span class="badge">Automação</span>
+        <span class="badge">Produtividade</span>
+        <span class="badge">Rastreabilidade</span>
+        <span class="badge">Substituição de Excel</span>
+      </div>
+      <p>
+        Desenvolvimento de uma interface para otimizar o controle de manutenções preventivas,
+        reduzindo erros de preenchimento e retrabalho.
+      </p>
+      <p>
+        Sistema pensado para ambientes industriais onde confiabilidade e padronização são essenciais.
+      </p>
+
+      <div class="links">
+        <a class="btn" href="https://github.com/Pellzz/Sistema-de-Controle-e-Automa-" target="_blank" rel="noreferrer">🐙 Código</a>
+        <a class="btn" href="#contato">📩 Solicitar demonstração</a>
+      </div>
+    </article>
+
+    <!-- Projeto 2 -->
+    <article class="item col-6">
+      <h3>Monitoramento Ambiental em Rede(Projeto Acadêmico)</h3>
+      <div class="meta">
+        <span class="badge">TCP/IP</span>
+        <span class="badge">Cliente-Servidor</span>
+        <span class="badge">Comunicação em Rede</span>
+        <span class="badge">Projeto Acadêmico</span>
+      </div>
+      <p>
+        Sistema de comunicação em rede com acesso biometrico, desenvolvido para permitir a troca de informações
+        entre inspetores ambientais e uma central de monitoramento.
+      </p>
+      <p>
+        Estruturado com arquitetura cliente-servidor, possibilitando expansão para envio de arquivos,
+        multicast e integração com outros módulos.
+      </p>
+
+      <div class="links">
+        <a class="btn" href="https://github.com/Pellzz/Sistema-de-Biometria-para-Valida-o" target="_blank" rel="noreferrer">🐙 Código</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+    <!-- EXPERIÊNCIA -->
+    <section id="experiencia">
+      <div class="section-head">
+        <h2>Experiência e Formação</h2>
+        <p>Linha do tempo do “mão na massa”.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="line">
+          <div class="dot experiencia"></div>
+          <div>
+            <h3>Foxconn • Técnico de Automação</h3>
+            <p>Atuação com automação industrial, CLPs e robôs, manutenção preventiva e melhoria contínua.</p>
+          </div>
+        </div>
+
+        <div class="line">
+          <div class="dot"></div>
+          <div>
+            <h3>Ciência da Computação • Graduação</h3>
+            <p>Projetos em redes, sistemas cliente-servidor, banco de dados e aplicações com interface.</p>
+          </div>
+        </div>
+
+        <div class="line">
+          <div class="dot"></div>
+          <div>
+            <h3>Técnico em Mecatrônica</h3>
+            <p>Base sólida em elétrica/eletrônica, automação, instrumentação e manutenção.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="section-head">
+        <h2>Contato</h2>
+        <p>Me chama e eu respondo sem protocolo burocrático.</p>
+      </div>
+
+      <div class="grid">
+        <div class="item col-8">
+          <h3>Vamos conversar</h3>
+          <p>Quer que eu apresente uma proposta de estágio, um projeto de automação + TI, ou melhorar um processo que hoje depende de Excel?</p>
+          <div class="links">
+            <a class="btn primary" id="btnEmail" href="mailto:pablopellozzo64@gmail.com">✉️ Enviar e-mail</a>
+            <a class="btn" id="btnWhats" href="https://wa.me/+5511915981587" target="_blank" rel="noreferrer">📱 WhatsApp</a>
+            <a class="btn" id="btnCV" href="./curriculo_Pablo.pdf" download>📄 Baixar currículo</a>
+
+          </div>
+        </div>
+
+        <div class="item col-4">
+          <h3>Links rápidos</h3>
+          <p style="margin-bottom:10px;">Edite estes links com seus perfis:</p>
+          <div class="links">
+            <a class="btn" href="https://github.com/Pellzz" target="_blank" rel="noreferrer">🐙 GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/pablo-pellozzo-b49b3926a/" target="_blank" rel="noreferrer">💼 LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> <span id="nameFooter">Pablo Luan</span>. Feito com HTML/CSS/JS.</span>
+      <span>
+      
+      </span>
+    </footer>
+  </main>
+
+  <script>
+    // Tema
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+
+    function setTheme(t){
+      root.setAttribute("data-theme", t);
+      localStorage.setItem("theme", t);
+      themeBtn.textContent = (t === "light") ? "🌙 Tema" : "☀️ Tema";
+    }
+    const saved = localStorage.getItem("theme");
+    if(saved) setTheme(saved);
+    else setTheme(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+
+    themeBtn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme");
+      setTheme(current === "light" ? "dark" : "light");
+    });
+
+    // Ano
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Atalhos
+    document.addEventListener("keydown", (e) => {
+      if (e.target && ["INPUT","TEXTAREA"].includes(e.target.tagName)) return;
+
+      const k = e.key.toLowerCase();
+      if (k === "t") themeBtn.click();
+      if (k === "g") document.getElementById("btnGithub").click();
+      if (k === "l") document.getElementById("btnLinkedIn").click();
+    });
+  </script>
+</body>
+</html>
